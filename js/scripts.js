@@ -1,20 +1,20 @@
 // BACK END //
+var changePlayer = 1;
 var totalArray1 = [];
+var totalArray2 = [];
 var winningArray1 = [];
+var winningArray2 = [];
 
-function Player1(name, score){
-  this.name = name;
-  this.score = score;
-  this.scoreArray = [];
+function Player(name1, name2){
+  this.name1 = name1;
+  this.name2 = name2;
+  this.scoreArray1 = [];
+  this.scoreArray2 = [];
 }
-function Player2(name, score){
-  this.name = name;
-  this.score = score;
-}
-
-Player1.prototype.scoring = function () {
+//this function breaks everything when conditional is added//
+Player.prototype.scoring = function () {
   var die = Math.floor(Math.random() * 6 + 1);
-  this.scoreArray.push(die);
+  this.scoreArray1.push(die);
 };
 
 function winner() {
@@ -23,38 +23,50 @@ function winner() {
   win += winningArray1[i]
   if (win >= 100) {
     alert("hallelujah");
-
   }
 }
-
 // FRONT END //
 $(document).ready(function(){
   $("#form1").submit(function(event){
     event.preventDefault();
     var name1 = $("#name1").val();
     var name2 = $("#name2").val();
-    var score1 = 0;
-    var score2 = 0;
-    var playerOne = new Player1(name1, score1);
-    console.log(playerOne);
+    var player = new Player(name1, name2);
+    console.log(player);
+
     $("#roll").click(function(){
-      playerOne.scoring();
+      player.scoring();
       var total = 0;
-      for (var i = 0; i < playerOne.scoreArray.length; i++) {
-        if (playerOne.scoreArray[i] === 1) {
+      for (var i = 0; i < player.scoreArray1.length; i++) {
+        if (player.scoreArray1[i] === 1 && changePlayer === 1) {
           totalArray1 = [];
-          alert("You rolled a one!")
-        } else {
-          total +=  playerOne.scoreArray[i];
+          alert("Player 1, you rolled a one!");
+          changePlayer = 2;
+        } else if (changePlayer === 1){
+          total += player.scoreArray1[i];
           totalArray1.push(total);
-          playerOne.scoreArray = [];
+          player.scoreArray1 = [];
 
           console.log(totalArray1);
           console.log(total);
-          console.log(playerOne.scoreArray);
+          console.log(changePlayer);
+          console.log(player.scoreArray1);
+        } else if (player.scoreArray1[i] === 1 && changePlayer === 2){
+          totalArray1 = [];
+          alert("Player 2, you rolled a one!");
+          changePlayer = 1;
+          console.log(totalArray2);
+        } else {
+          total += player.scoreArray1[i];
+          totalArray2.push(total);
+          player.scoreArray1 = [];
+          console.log(totalArray2);
         }
-      }
+
+        }
+
     });
+
     $("#hold").click(function(){
       var final1 = 0;
       for (var i = 0; i < totalArray1.length; i++) {
@@ -64,14 +76,7 @@ $(document).ready(function(){
       winningArray1.push(final1);
       winner();
       console.log(winningArray1);
-      $("#output").text(final1);
-      console.log(final1);
-      });
-
-
-
-
-      });
-
-
+      changePlayer = 2;
+    });
   });
+});
