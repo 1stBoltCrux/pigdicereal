@@ -9,25 +9,73 @@
     <title>Pig Dice</title>
   </head>
   <body>
-    <div class="container">
-      <form id="form1">
-        <div class="form-group">
-          <h3>Player 1</h3>
-          <input type="text" class="form-control" id="name1" placeholder="Enter name">
-          <h3>Player 2</h3>
-          <input type="text" class="form-control" id="name2" placeholder="Enter name">
-        </div>
-        <button type="submit" class="btn btn-info">Submit</button>
-      </form>
-      <div class="roll">
-          <button id="roll" type="button" class="btn btn-success">Roll die!</button>
-      </div>
-      <div class="hold">
-        <button id="hold" type="button" class="btn btn-danger">Hold</button>
-      </div>
-      <div id="output">
 
+    <!-- Begin Header -->
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 id="headerTitle">Pig Dice</h1>
       </div>
     </div>
+    <!-- End Header -->
+
+    <!-- Begin Submit Form -->
+    <div class="container landingPage">
+      <div class="row">
+        <div class="col-md">
+          <form id="form1">
+            <div class="form-group">
+              <h3>Player 1</h3>
+              <input type="text" class="form-control" id="name1" placeholder="Enter name">
+              <h3>Player 2</h3>
+              <input type="text" class="form-control" id="name2" placeholder="Enter name">
+            </div>
+            <button type="submit" class="btn btn-info">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Submit Form -->
+
+    <!-- Begin Game Section -->
+    <div class="container card" id="gameBoard">
+      <div class="row">
+        <div class="col-md" id="p1GameBoard">
+          <h3>Player 1</h3>
+          <p class="lead"><span class="playerName1"></span></p>
+          <p>Score: <span class="p1Score"></span></p>
+        </div>
+        <div class="col-md" id="dice">
+
+        </div>
+        <div class="col-md" id="p2GameBoard">
+          <h3>Player 2</h3>
+          <p class="lead"><span class="playerName2"></span></p>
+          <p>Score: <span class="p2Score"></span></p>
+        </div>
+      </div>
+      <!-- Game Board Buttons -->
+      <div class="row">
+        <div class="col-md text-center gameButtons">
+          <div>
+              <button id="roll" type="button" class="btn btn-success">Roll die!</button>
+              <button id="hold" type="button" class="btn btn-danger">Hold</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Game Section -->
+
+    <!-- Begin Winner Section -->
+    <div class="container card" id="endGame">
+      <div class="card-body text-center" id="playerWin" >
+        <h3 class="card-title"><span class="playerName"></span>, you won!</h3><br>
+        <p class="lead">Thanks for playing!</p>
+      </div>
+      <div class="card-body text-center">
+        <button type="button" class="btn btn-info" id="refresh">Start Over</button>
+      </div>
+    </div>
+    <!-- End Winner Section -->
+
   </body>
 </html>

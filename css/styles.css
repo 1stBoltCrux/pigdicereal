@@ -1,0 +1,50 @@
+/*Buttons*/
+/*#refresh {
+  display: none;
+}*/
+
+/*UI*/
+#gameBoard {
+  display: none;
+}
+
+#endGame {
+  display: none;
+}
+
+.diceFace1 {
+  background-image: url("../img/die-1.png");
+  background-repeat: no-repeat;
+   background-position: center;
+}
+
+.diceFace2 {
+  background-image: url("../img/die-2.png");
+  background-repeat:
+   no-repeat;
+   background-position: center;
+}
+
+.diceFace3 {
+  background-image: url("../img/die-3.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.diceFace4 {
+  background-image: url("../img/die-4.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.diceFace5 {
+  background-image: url("../img/die-5.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.diceFace6 {
+  background-image: url("../img/die-6.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
